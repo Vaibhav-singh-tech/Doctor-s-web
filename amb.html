@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Service</title>
+    <link rel="stylesheet" href="./amb.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Ambulance Service</h1>
+
+    </header>
+
+    
+    <!-- Modal Structure -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Contact Information</h2>
+            <ul>
+                <li><i class="fa fa-phone"></i> 08401752467</li>
+                <li><i class="fa fa-phone"></i> 09978525393</li>
+                <li><i class="fa fa-phone"></i> 06355522162</li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+        <a href="#overview">Overview</a>
+        <a href="#photos">Photos</a>
+        <a href="#quick-info">Quick Info</a>
+        <a href="#reviews">Reviews</a>
+    </nav>
+
+    <!-- Content Section -->
+    <section id="overview" class="content-section">
+        <h2>Overview</h2>
+        <p>Shree Kruppa Ambulance Service provides reliable and prompt ambulance services across Surat, available 24/7.</p>
+        <p> Our well-equipped vehicles and trained medical staff ensure the highest standards of emergency care.</p>
+        <img src="./images/Enf.jpg" alt="">
+    </section>
+
+    <!-- Photo Upload Section -->
+
+    <section id="photos" class="content-section photo-upload-section">
+        <div>
+            <h1>Photos</h1>
+        </div>
+        <div id="photoPreview" class="photo-preview">
+            <img src="./images/Cap.JPG" >
+            <img src="./images/Cap2.JPG" >
+            <img src="./images/Cap1.JPG" >
+            <img src="./images/Cap3.JPG" >
+        </div>
+        <h2>Upload Your Photos</h2>
+        <form id="uploadForm">
+            <input type="file" id="photoInput" accept="image/*">
+            <button type="submit" class="upload-button">Upload Photo</button>
+        </form>
+        <!-- <div id="photoPreview" class="photo-preview"></div> -->
+    </section>
+
+
+<!-- Action Buttons -->
+
+<!-- Footer and Scripts -->
+<footer class="footer">
+    <p>&copy; 2024 Shree Kruppa Ambulance Service | <a href="#">Privacy Policy</a></p>
+</footer>
+
+
+
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const photoInput = document.getElementById('photoInput');
+    const photoPreview = document.getElementById('photoPreview');
+
+    if (photoInput.files && photoInput.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            photoPreview.appendChild(img);
+        }
+
+        reader.readAsDataURL(photoInput.files[0]);
+    }
+});
+// Get modal elements
+const modal = document.getElementById('contactModal');
+const showNumberButton = document.getElementById('showNumberButton');
+const closeButton = document.querySelector('.close-button');
+
+// Show the modal when the button is clicked
+showNumberButton.addEventListener('click', () => {
+    modal.style.display = 'block';
+});
+
+// Close the modal when the close button is clicked
+closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Close the modal when the user clicks outside the modal
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+    </script>
+</body>
+</html>
